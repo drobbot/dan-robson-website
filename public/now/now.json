@@ -1,8 +1,71 @@
 {
-  "updated": "2026-08-07",
+  "updated": "2026-08-13",
   "cadence": "refreshes every 3 days",
   "how": "These activity cards are automatically generated based on activity in my memory system. I review them every few days, and they automatically publish here.",
   "items": [
+    {
+      "date": "2026-08-11",
+      "display_date": "11 Aug",
+      "title": "Turned a set of one-off landing pages into a build system",
+      "category": "Automation",
+      "tools": [
+        "Python",
+        "Playwright",
+        "HTML",
+        "Git"
+      ],
+      "body": "Rebuilt three one-off landing pages into a versioned repo where each page assembles from shared parts through a build script, after finding 266 of 346 style rules were byte identical across them. Proved the shared stylesheet changed nothing by writing a harness that compares 41 computed properties and box geometry at five widths, 952 elements with zero differences, then wrote the regulatory rate-disclosure parity into that stylesheet as one locked rule so the two figures cannot be edited apart."
+    },
+    {
+      "date": "2026-08-11",
+      "display_date": "11 Aug",
+      "title": "Built the first real component on a new foundation and found the product had no icons",
+      "category": "Design system",
+      "tools": [
+        "Next.js",
+        "React",
+        "Tailwind",
+        "Storybook"
+      ],
+      "body": "Built the first production component on a rebuilt foundation as a deliberately small proof, one server-rendered layout with three Storybook states and brand colour reaching it only through CSS custom properties, so a slow build would surface the problem in week one rather than week five. Found the product had no icon set anywhere in it once a text label needed replacing with a pictogram, then installed one across two stacked pull requests because the repo forbids amending its own rules inside the change those rules govern, and used the server-safe entry point after checking the build output rather than trusting the documentation."
+    },
+    {
+      "date": "2026-08-11",
+      "display_date": "11 Aug",
+      "title": "Traced three silent deploy failures to a commit author mismatch",
+      "category": "Ops",
+      "tools": [
+        "Vercel",
+        "GitHub",
+        "Git"
+      ],
+      "body": "Traced three merges that had quietly deployed nothing to a host gating team deploys on the commit author's account login, which a squash merge rewrites to whoever opened the pull request. Consolidated onto one identity, corrected a mailmap pointing the other way, proved the fix with a green deploy on the main branch, then wrote up the harder problem, which is that three failures passed unnoticed and a monitoring gap will come back wearing a different cause."
+    },
+    {
+      "date": "2026-08-11",
+      "display_date": "11 Aug",
+      "title": "Art-directed a hero section and binned two generated photos for trademark risk",
+      "category": "Brand",
+      "tools": [
+        "Unsora",
+        "Playwright",
+        "CSS"
+      ],
+      "body": "Reworked a landing page hero into a two column layout where the image height follows the copy column rather than the other way round, and stacked it on mobile as a portrait crop because a widescreen crop cut the subject's gesture out of frame entirely. Binned the first two generated photographs before either shipped, one carrying a real cookware brand on a shelf and one a real espresso machine brand in frame, since visible trademarks cannot ship on a commercial page, then rewrote the change as a re-runnable patch after a parallel session working the same files reverted it."
+    },
+    {
+      "date": "2026-08-10",
+      "display_date": "10 Aug",
+      "title": "Built a launch video by frame-stepping HTML scenes into a render pipeline",
+      "category": "Content tool",
+      "tools": [
+        "Playwright",
+        "ffmpeg",
+        "HTML",
+        "Python"
+      ],
+      "body": "Built a twenty second vertical launch video for an endurance nutrition brand end to end, animating the type and logo sequences as HTML scenes with a seek function, frame-stepping them headless into a PNG sequence, and assembling the cut locally with ffmpeg so the render path stayed under control. Matched the licensed music to a reference track by measuring onset density and bass energy."
+    },
     {
       "date": "2026-08-07",
       "display_date": "7 Aug",
@@ -38,65 +101,6 @@
         "Claude Code"
       ],
       "body": "Rebuilt a product catalogue where bundles, single flavours and multipacks had drifted into competing listings, collapsing them into one pack ladder with variants so stock still draws down from the component packets rather than the bundle. Traced a welcome email that had never fired to a flow triggered on list membership instead of the subscribe event, rebuilt it on the correct trigger with a branded template, and confirmed it live end to end."
-    },
-    {
-      "date": "2026-07-17",
-      "display_date": "17 Jul",
-      "title": "Scripted a Vox-style explainer and stood up the pipeline to make it",
-      "category": "Content tool",
-      "tools": [
-        "Claude Code",
-        "Unsora",
-        "ffmpeg"
-      ],
-      "body": "Wrote and tightened a paper-collage explainer script on how agent memory systems work, cut to a one-point-per-beat structure and plain enough for a ten-year-old to follow. Audited the community-built video skill behind it line by line for hidden payloads before trusting it, then wired up the generation pipeline ready to render."
-    },
-    {
-      "date": "2026-07-10",
-      "display_date": "10 Jul",
-      "title": "Built a self-maintaining health system for a large knowledge vault",
-      "category": "Automation",
-      "tools": [
-        "Claude Code",
-        "Python",
-        "Markdown"
-      ],
-      "body": "Researched why large AI knowledge bases start to degrade past a couple of hundred sources, then built a fourteen-metric health scorecard that runs as the first step of a weekly maintenance pass, with a fix budget, an escalation rule for issues that keep recurring, and a truth check that reads a sample of pages against their sources for claim drift. Closed the old loop where the same problems got flagged every week and nothing actually moved."
-    },
-    {
-      "date": "2026-07-10",
-      "display_date": "10 Jul",
-      "title": "Turned an essay on agentic coding into a reusable unknowns skill",
-      "category": "Agent infra",
-      "tools": [
-        "Claude",
-        "Markdown"
-      ],
-      "body": "Codified a piece on the gap between the plan and the real codebase into an agent skill that surfaces automatically whenever a new project starts, mapping what is known, what is known to be unknown, and the blind spots in between. Ran it across the projects with the most momentum and handed back a list of open decisions that each needed an owner and a date."
-    },
-    {
-      "date": "2026-07-08",
-      "display_date": "8 Jul",
-      "title": "Turned a long braindump into a deployed mobile reading page",
-      "category": "Content tool",
-      "tools": [
-        "Claude",
-        "HTML",
-        "Vercel"
-      ],
-      "body": "Took a collaborator's long strategy braindump and turned it into a clean, mobile-first reading page with a bespoke palette and type treatment, deployed to a live URL so the whole thing could be absorbed on a phone. Gave it a visual identity pitched at the subject rather than a template."
-    },
-    {
-      "date": "2026-07-07",
-      "display_date": "7 Jul",
-      "title": "Built a pipeline that turns a video walkthrough into screenshot-aligned feedback",
-      "category": "Automation",
-      "tools": [
-        "Claude Code",
-        "Whisper",
-        "ffmpeg"
-      ],
-      "body": "Built a pipeline that takes a screen-recorded walkthrough of a UI prototype and turns it into a structured feedback doc, transcribing the audio with timestamps, pulling a frame at each comment, and lining every note up against the exact screen it points at. Distilled the review into a running set of design checks so the next build catches the same drift earlier."
     }
   ]
 }
