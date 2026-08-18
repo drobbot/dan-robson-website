@@ -102,6 +102,17 @@
         "Markdown"
       ],
       "body": "Turned a team knowledge-system rollout into a self-contained install runbook a second coding agent runs top to bottom, five skills installed, the config edits quoted back for review, each skill run once to prove it works, and the scheduled tasks handed back at the end because an agent cannot create them. Built a sensitivity classification into the sharing step so anything marked confidential is refused rather than surfaced, and instructed the runbook to halt and report on a structure mismatch rather than improvise a bridge."
+    },
+    {
+      "date": "2026-07-29",
+      "display_date": "29 Jul",
+      "title": "Built an automatic time-tracking pipeline for coding sessions",
+      "category": "Automation",
+      "tools": [
+        "Claude Code",
+        "Google Calendar"
+      ],
+      "body": "Wired every local coding session to log its own activity through editor hooks, with a nightly sweep that pairs prompts with completions, groups them into work blocks, and posts each block to a dedicated calendar. Backfilled seven weeks of history, 179 work blocks, in the same pass."
     }
   ]
 }
