@@ -104,6 +104,30 @@
       "body": "Turned a team knowledge-system rollout into a self-contained install runbook a second coding agent runs top to bottom, five skills installed, the config edits quoted back for review, each skill run once to prove it works, and the scheduled tasks handed back at the end because an agent cannot create them. Built a sensitivity classification into the sharing step so anything marked confidential is refused rather than surfaced, and instructed the runbook to halt and report on a structure mismatch rather than improvise a bridge."
     },
     {
+      "date": "2026-08-04",
+      "display_date": "4 Aug",
+      "title": "Rebuilt a landing page on real design-system components and audited what the build got wrong",
+      "category": "Web build",
+      "tools": [
+        "Next.js",
+        "shadcn/ui",
+        "Claude Code"
+      ],
+      "body": "Rebuilt a two-page landing site on a design system's actual components rather than hand-rolled markup, then ran an audit pass that caught an invented token leaving icon tiles with no background, five card grids stacked back to back, dead assets left behind by the component installs, and internal links bypassing the router. Accessibility scored 100 on both pages once the fixes landed."
+    },
+    {
+      "date": "2026-08-03",
+      "display_date": "3 Aug",
+      "title": "Set a token-driven type weight standard on a rate-comparison site",
+      "category": "Design system",
+      "tools": [
+        "Next.js",
+        "Tailwind",
+        "shadcn/ui"
+      ],
+      "body": "Replaced a loose spread of font-weight classes with four named type roles driven by tokens, so a weight change is one number rather than a sweep through components. Caught a class-merge bug on the way through, where the custom roles were being filed under the wrong property and silently losing to a component's own baked-in weight, which meant things rendered a weight their class list said they weren't."
+    },
+    {
       "date": "2026-07-29",
       "display_date": "29 Jul",
       "title": "Built an automatic time-tracking pipeline for coding sessions",
