@@ -4,6 +4,53 @@
   "how": "These activity cards are automatically generated based on activity in my memory system. I review them every few days, and they automatically publish here.",
   "items": [
     {
+      "date": "2026-08-19",
+      "display_date": "19 Aug",
+      "title": "Built a git sync net for a shared vault that reports rather than commits",
+      "category": "Agent infra",
+      "tools": [
+        "Bash",
+        "Git",
+        "Claude Code"
+      ],
+      "body": "Built a net of session hooks for a shared git-backed knowledge vault, rebase-pulling when a session starts so nothing begins from a stale copy and reporting uncommitted or unpushed work when it ends. The closing hook reports rather than sweeps on purpose, because one working directory serving several concurrent agents means a blanket stage-and-commit would bundle whatever another session had half-written and file it under the wrong author, and the installer patches the settings file in place so it can be re-run without stacking duplicate hooks."
+    },
+    {
+      "date": "2026-08-18",
+      "display_date": "18 Aug",
+      "title": "Drew a wordmark and shipped seventeen exports off one mark set",
+      "category": "Brand",
+      "tools": [
+        "SVG",
+        "sips",
+        "Next.js"
+      ],
+      "body": "Drew a wordmark and mark set for a publishing product, then shipped seventeen raster exports off it covering the favicon sizes, the home-screen icon, avatars and a profile banner. Browser chrome and the iOS home screen take deliberately different source files, a rounded badge for one and a full-bleed opaque square for the other, because iOS composites transparent corners rather than honouring them, and the recoloured profile mark was measured against the original at 98.65% overlap to prove it was the same drawing rather than a redraw."
+    },
+    {
+      "date": "2026-08-18",
+      "display_date": "18 Aug",
+      "title": "Built a styleguide that reads its own values from the browser so it cannot drift",
+      "category": "Design system",
+      "tools": [
+        "Next.js",
+        "CSS",
+        "TypeScript"
+      ],
+      "body": "Built a styleguide route that renders the locked design tokens as live swatches, reading every value out of the browser at runtime so the page cannot drift from the stylesheet it documents. A coverage test fails the build when a token exists with no swatch against it, which turns the page into a check rather than a document, and it was verified by requesting it from the merged branch rather than trusting the merge, 64 fills served cold."
+    },
+    {
+      "date": "2026-08-18",
+      "display_date": "18 Aug",
+      "title": "Added a health check that only passes a note once it left evidence",
+      "category": "Agent governance",
+      "tools": [
+        "Python",
+        "Claude Code"
+      ],
+      "body": "Added a check that tests whether session notes were promoted into the wiki rather than merely filed away, passing one only when it left a trace, either a page it links whose timestamp moved after the note was written or its own slug cited as a source. The first cold run flagged twenty-five problems that turned out to be three genuinely different faults, so it ships as three separate counts instead of one number, and the suppression list is deliberately empty because the reason most entries would have been added to it is the exact failure it exists to catch."
+    },
+    {
       "date": "2026-08-18",
       "display_date": "18 Aug",
       "title": "Reverse-engineered a television's art API and shipped an unattended 4K pipeline",
