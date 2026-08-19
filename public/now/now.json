@@ -1,8 +1,21 @@
 {
-  "updated": "2026-08-18",
+  "updated": "2026-08-19",
   "cadence": "refreshes every 3 days",
   "how": "These activity cards are automatically generated based on activity in my memory system. I review them every few days, and they automatically publish here.",
   "items": [
+    {
+      "date": "2026-08-18",
+      "display_date": "18 Aug",
+      "title": "Reverse-engineered a television's art API and shipped an unattended 4K pipeline",
+      "category": "Automation",
+      "tools": [
+        "Python",
+        "samsungtvws",
+        "Pillow",
+        "pytest"
+      ],
+      "body": "Reverse-engineered an undocumented art API exposed by a 2025 television on the local network and shipped a tool that pushes a curated 4K set to it unattended, behind 164 mutation-checked tests. Pairing needs the set's home screen while uploading works from art mode, and that distinction is what makes an unattended refresh possible, so the tool now runs on its own with the photos already loaded on the set structurally protected from deletion."
+    },
     {
       "date": "2026-08-14",
       "display_date": "14 Aug",
@@ -27,6 +40,19 @@
         "pnpm"
       ],
       "body": "Traced a component library site stuck on twelve components with its fonts 404ing to a subdomain still aliased to an 88 day old deployment of the previous major version, which meant auto deploy had been working the whole time and the site was simply a different design system. Two things had hidden it, a cached last-modified header reading as today and a search that false-matched because a dot also matches a hyphen, and the repair pointed the domain at the project rather than a single deployment so it now follows production without intervention."
+    },
+    {
+      "date": "2026-08-13",
+      "display_date": "13 Aug",
+      "title": "Built a Kindle sender that only delivers books from lawful sources",
+      "category": "Agent infra",
+      "tools": [
+        "Python",
+        "EPUB",
+        "Gmail",
+        "Claude Code"
+      ],
+      "body": "Ported a third-party skill into a personal agent system so a named book can be found, checked and delivered to a Kindle in one step, rewriting its delivery layer onto an existing mail connector that attaches the file directly instead of routing through a third-party uploader. The legal gate is the point of the thing, only public domain or openly licensed sources pass it, and a quality gate proves the file renders properly before anything gets sent."
     },
     {
       "date": "2026-08-11",
@@ -126,17 +152,6 @@
         "shadcn/ui"
       ],
       "body": "Replaced a loose spread of font-weight classes with four named type roles driven by tokens, so a weight change is one number rather than a sweep through components. Caught a class-merge bug on the way through, where the custom roles were being filed under the wrong property and silently losing to a component's own baked-in weight, which meant things rendered a weight their class list said they weren't."
-    },
-    {
-      "date": "2026-07-29",
-      "display_date": "29 Jul",
-      "title": "Built an automatic time-tracking pipeline for coding sessions",
-      "category": "Automation",
-      "tools": [
-        "Claude Code",
-        "Google Calendar"
-      ],
-      "body": "Wired every local coding session to log its own activity through editor hooks, with a nightly sweep that pairs prompts with completions, groups them into work blocks, and posts each block to a dedicated calendar. Backfilled seven weeks of history, 179 work blocks, in the same pass."
     }
   ]
 }
