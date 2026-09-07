@@ -147,6 +147,18 @@ p, li, figcaption, blockquote { text-wrap: pretty; }
 .squircle { corner-shape: squircle; }
 .pill { border-radius: var(--radius-pill); corner-shape: round; }
 
+/* ── PAPER PAD — a soft pad of the page colour behind dense text so the
+   desk grid recedes under reading matter (grid still shows through at
+   ~30%, and the cursor reveal keeps working around the block).
+   Apply to an <article> or any long-text container. ── */
+.paper {
+  position: relative;
+  z-index: 1;
+  --paper: color-mix(in oklab, var(--background) 70%, transparent);
+  background: var(--paper);
+  box-shadow: 0 0 0 1.5rem var(--paper), 0 0 3rem 3rem var(--paper);
+}
+
 /* Waving hand on the "Say hi" CTA — waves on hover/focus */
 .wave-hand {
   display: inline-block;

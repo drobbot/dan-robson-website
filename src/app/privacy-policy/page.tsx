@@ -16,7 +16,7 @@ export default function PrivacyPolicy() {
       <main>
         <section className="relative" style={{ padding: '10rem 1.5rem 4rem' }}>
           <div className="w-full md:pl-[calc(25%-5rem)]" style={{ maxWidth: '90rem', margin: '0 auto' }}>
-            <article style={{ maxWidth: '42.5rem' }}>
+            <article className="paper" style={{ maxWidth: '42.5rem' }}>
               <h1
                 className="leading-[1.1]"
                 style={{
