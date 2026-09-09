@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { EB_Garamond } from 'next/font/google';
 import { GridBackground } from '@/components/GridBackground';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
 // EB Garamond is loaded as the serif fallback for Martina Plantijn (the v4
@@ -99,6 +100,7 @@ export default function RootLayout({
         <div className="relative z-10">
           {children}
         </div>
+        <Analytics />
       </body>
     </html>
   );
