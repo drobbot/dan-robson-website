@@ -12,7 +12,7 @@ import { CopyBlock } from '@/components/CopyBlock';
 const ZIP = '/p/working-memory-7c2e91/working-memory.zip';
 const MAILTO = 'mailto:dan@robson.studio?subject=Working%20Memory%20feedback';
 
-const FEEDBACK_PROMPT = `Read AGENTS.md. Then write a feedback note for the person who built this working memory system, from the evidence in this folder: the Logbook, the Handover archive, the Wiki, and the profile pages.
+const FEEDBACK_PROMPT = `Read AGENTS.md. Then write a feedback note for Dan Robson, who built this working memory system (robson.studio), from the evidence in this folder: the Logbook, the Handover archive, the Wiki, and the profile pages.
 
 Cover, in plain sentences:
 - Which skills I used and which I never touched.
@@ -133,6 +133,7 @@ export default function WorkingMemorySystemResource() {
                 </P>
                 <div className="wm-rails">
                   <Details summary="See the sixteen skills">
+                  <Table>
                     <Group title="For the memory itself (4)">
                       <Row name="ingest">Files everything new: the Drop Zone and any connected email, Teams or calendar, vetted, noted, linked.</Row>
                       <Row name="lint">The health check: orphans, dead links, stale pages, duplicates, sizes. Fixes what is clear, asks about the rest.</Row>
@@ -157,8 +158,10 @@ export default function WorkingMemorySystemResource() {
                       <Row name="draft-a-message">A draft to a named person in your voice, respecting the boundaries page. Never sends.</Row>
                       <Row name="execution-discipline">The judgement every other skill loads first: ground truth only, stop loudly, done means evidence.</Row>
                     </Group>
-                  </Details>
+                    </Table>
+                </Details>
                 <Details summary="What else is in the zip">
+                  <Table>
                   <Group title="Rules (3 files)">
                     <Row name="AGENTS.md">The front door, under 700 words. Codex reads it every session. Corrections you say out loud land here as rules.</Row>
                     <Row name="filing.md">The pipeline for anything that arrives: identify, vet, weigh, distribute, note, link.</Row>
@@ -175,6 +178,7 @@ export default function WorkingMemorySystemResource() {
                     <Row name="routines.md">The three scheduled-task recipes and the one caveat.</Row>
                     <Row name="aliases.md">One person, one page: every spelling seen.</Row>
                   </Group>
+                  </Table>
                 </Details>
                 </div>
 
@@ -216,19 +220,21 @@ export default function WorkingMemorySystemResource() {
                   it earns a place in your day, I would like to hear where it did and where it did
                   not. A short note is plenty.
                 </P>
-                <P>
-                  After a few weeks, the easiest way is to let the system write it. Paste this into
-                  Codex inside the folder, then attach the file it produces below.
-                </P>
-                <CopyBlock text={FEEDBACK_PROMPT} />
-                <div style={{ marginTop: '1.75rem' }}>
-                  <FeedbackForm page="working-memory-7c2e91" mailto={MAILTO} />
+                <div className="wm-rails">
+                  <Details summary="Leave feedback">
+                    <P>
+                      After a few weeks, the easiest way is to let the system write it. Paste this
+                      into Codex inside the folder, then attach the file it produces below.
+                    </P>
+                    <CopyBlock text={FEEDBACK_PROMPT} />
+                    <div style={{ marginTop: '1.75rem' }}>
+                      <FeedbackForm page="working-memory-7c2e91" mailto={MAILTO} />
+                    </div>
+                    <p style={{ marginTop: '1rem', fontSize: '0.875rem', color: 'var(--muted-foreground)' }}>
+                      Or email it: <A href={MAILTO}>dan@robson.studio</A>
+                    </p>
+                  </Details>
                 </div>
-                <P>
-                  <span style={{ display: 'block', marginTop: '1rem', fontSize: '0.875rem', color: 'var(--muted-foreground)' }}>
-                    Or email it: <A href={MAILTO}>dan@robson.studio</A>
-                  </span>
-                </P>
 
                 <div style={{ marginTop: '2.5rem' }}>
                   <StyledButton href={ZIP}>Download the starter kit (zip, 56 KB)</StyledButton>
@@ -343,11 +349,7 @@ function Details({ summary, children }: { summary: string; children: React.React
           </svg>
         </span>
       </summary>
-      <div style={{ padding: '0.25rem 0 1.25rem' }}>
-        <table className="wm-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9375rem', lineHeight: 1.5 }}>
-          {children}
-        </table>
-      </div>
+      <div style={{ padding: '0.25rem 0 1.25rem' }}>{children}</div>
       <style>{`
         .wm-rails { margin: 1.25rem 0 1.5rem; border-top: 1px solid var(--border); }
         .wm-details { border-bottom: 1px solid var(--border); }
@@ -388,5 +390,13 @@ function Row({ name, children }: { name: string; children: React.ReactNode }) {
       <td>{name}</td>
       <td>{children}</td>
     </tr>
+  );
+}
+
+function Table({ children }: { children: React.ReactNode }) {
+  return (
+    <table className="wm-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9375rem', lineHeight: 1.5 }}>
+      {children}
+    </table>
   );
 }
