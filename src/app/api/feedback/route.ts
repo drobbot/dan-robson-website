@@ -1,9 +1,11 @@
 import { put } from '@vercel/blob';
+import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 
 // Feedback drop for the unlisted resource pages. Stores the note and an
 // optional Markdown/text attachment in the project's Blob store under
-// feedback/<page>/<timestamp>/. Nothing is emailed; Dan reads the store.
+// feedback/<page>/<timestamp>/, then emails Dan a copy with the attachment
+// when RESEND_API_KEY is set. The store is the record; the email is the ping.
 
 export const runtime = 'nodejs';
 
@@ -72,23 +74,64 @@ export async function POST(req: Request) {
     '',
   ].join('\n');
 
+  let noteUrl = '';
+  let fileUrl = '';
   try {
-    await put(`${base}/note.md`, meta, {
+    const n = await put(`${base}/note.md`, meta, {
       access: 'public',
       addRandomSuffix: true,
       contentType: 'text/markdown; charset=utf-8',
     });
+    noteUrl = n.url;
     if (hasFile) {
       const f = file as File;
-      await put(`${base}/${safeName(f.name)}`, f, {
+      const u = await put(`${base}/${safeName(f.name)}`, f, {
         access: 'public',
         addRandomSuffix: true,
         contentType: 'text/markdown; charset=utf-8',
       });
+      fileUrl = u.url;
     }
   } catch {
     return NextResponse.json({ ok: false, error: 'store-failed' }, { status: 500 });
   }
 
-  return NextResponse.json({ ok: true });
+  // Email is best-effort: a failure here never fails the submission.
+  if (process.env.RESEND_API_KEY) {
+    try {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      const to = process.env.FEEDBACK_TO || 'dan@robson.studio';
+      const fromAddr = process.env.FEEDBACK_FROM || 'Robson Studio <onboarding@resend.dev>';
+      const attachments = hasFile
+        ? [
+            {
+              filename: safeName((file as File).name),
+              content: Buffer.from(await (file as File).arrayBuffer()).toString('base64'),
+            },
+          ]
+        : undefined;
+      const lines = [
+        `Page: ${page}`,
+        `From: ${from || '(not given)'}`,
+        `Country: ${country || '(unknown)'}`,
+        `Received: ${new Date().toISOString()}`,
+        '',
+        note || '(no note; see attachment)',
+        '',
+        `Stored: ${noteUrl}`,
+        fileUrl ? `Attachment: ${fileUrl}` : '',
+      ].join('\n');
+      await resend.emails.send({
+        from: fromAddr,
+        to,
+        subject: `Feedback on ${page}${from ? ` from ${from}` : ''}`,
+        text: lines,
+        attachments,
+      });
+    } catch {
+      // Logged by Vercel; the store already has the submission.
+    }
+  }
+
+  return NextResponse.json({ ok: true, emailed: Boolean(process.env.RESEND_API_KEY) });
 }
