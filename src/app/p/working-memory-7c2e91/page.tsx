@@ -2,12 +2,28 @@ import type { Metadata } from 'next';
 import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
 import { StyledButton } from '@/components/StyledButton';
+import { FeedbackForm } from '@/components/FeedbackForm';
+import { CopyBlock } from '@/components/CopyBlock';
 
 // Unlisted resource page, shared by link only: noindex, not in the sitemap,
 // hashed slug, zip under the same hashed path. Same intent as the static
 // page under public/p.
 
 const ZIP = '/p/working-memory-7c2e91/working-memory.zip';
+const MAILTO = 'mailto:dan@robson.studio?subject=Working%20Memory%20feedback';
+
+const FEEDBACK_PROMPT = `Read AGENTS.md. Then write a feedback note for the person who built this working memory system, from the evidence in this folder: the Logbook, the Handover archive, the Wiki, and the profile pages.
+
+Cover, in plain sentences:
+- Which skills I used and which I never touched.
+- Where the onboarding asked something badly, or asked twice.
+- Where it filed something to the wrong page, or missed something I said.
+- What OneDrive or the machine did that got in the way.
+- What I changed or added, and what I would change if I could.
+- Whether the daily rituals earned their place, and how long they took.
+- What it should never do that it did, and what it did that I did not expect.
+
+Quote Logbook lines as evidence where useful. Do not include anything from the boundaries page, any person's name, or anything about the organisation; the note is about the system, not the work. Save it to 03-working-files/documents/YYYY-MM-DD-feedback.md and tell me the path.`;
 
 export const metadata: Metadata = {
   title: 'Working Memory System for Codex — a starter kit from Robson Studio',
@@ -201,7 +217,17 @@ export default function WorkingMemorySystemResource() {
                   not. A short note is plenty.
                 </P>
                 <P>
-                  <A href="mailto:dan@robson.studio?subject=Working%20Memory%20feedback">dan@robson.studio</A>
+                  After a few weeks, the easiest way is to let the system write it. Paste this into
+                  Codex inside the folder, then attach the file it produces below.
+                </P>
+                <CopyBlock text={FEEDBACK_PROMPT} />
+                <div style={{ marginTop: '1.75rem' }}>
+                  <FeedbackForm page="working-memory-7c2e91" mailto={MAILTO} />
+                </div>
+                <P>
+                  <span style={{ display: 'block', marginTop: '1rem', fontSize: '0.875rem', color: 'var(--muted-foreground)' }}>
+                    Or email it: <A href={MAILTO}>dan@robson.studio</A>
+                  </span>
                 </P>
 
                 <div style={{ marginTop: '2.5rem' }}>
